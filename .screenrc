@@ -1,0 +1,13 @@
+vbell off
+hardstatus alwayslastline 
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+screen -t first  1 
+
+shell -$SHELL
+
+autodetach            on 
+defscrollback         4000
+startup_message       off
+
+bind + resize +1
+bind - resize -1
