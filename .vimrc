@@ -17,11 +17,11 @@ nnoremap k g
 "Pathogen
 call pathogen#infect()
 
-set t_Co=256
-"colorscheme mustang
-let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
+"set t_Co=256
+colorscheme mustang
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"set background=dark
 
 "set scrolloff=1 "number of lines to be always visible below/above caret
 set laststatus=2
