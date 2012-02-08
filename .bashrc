@@ -106,7 +106,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+
+
 #my custom settings
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 alias vi='/usr/local/bin/vim'
 stty stop ^-
+alias tmux='tmux has-session >/dev/null 2>&1; if [ $? -eq 0 ]; then echo "Session already exists. Attaching";sleep 1;tmux attach; else echo "No session found. Creating new";sleep 1; tmux; fi'

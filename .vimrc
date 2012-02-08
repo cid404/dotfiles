@@ -6,7 +6,7 @@ nmap <silent> <leader>ev :e ~/.vimrc<CR>
 nmap <silent> <leader>es :so ~/.vimrc<CR>
 nmap <silent> ,/ :let @/=""<CR> " clearing search highlighting
 nmap <C-S> :w<CR>
-nmap <C-R> <Esc>:w<CR>:rubyf %:p<CR>
+"nmap <C-R> <Esc>:w<CR>:rubyf %:p<CR>
 nmap <F2> :set paste<CR>
 nmap <F3> :set nopaste<CR>
 
@@ -28,6 +28,11 @@ set laststatus=2
 set wrapscan
 set number
 set autoindent
+if has("autocmd")
+	autocmd FileType vim setl shiftwidth=4 tabstop=4
+	autocmd FileType ruby setl shiftwidth=2 tabstop=2
+	autocmd FileType c setl shiftwidth=4 tabstop=4
+endif
 set shiftwidth=2
 set tabstop=2
 set backspace=indent,eol,start
