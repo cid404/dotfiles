@@ -6,7 +6,7 @@ nmap <silent> <leader>ev :e ~/.vimrc<CR>
 nmap <silent> <leader>es :so ~/.vimrc<CR>
 nmap <silent> ,/ :let @/=""<CR> " clearing search highlighting
 nmap <C-S> :w<CR>
-"nmap <C-R> <Esc>:w<CR>:rubyf %:p<CR>
+nmap <F5> <Esc>:cclose<CR>:w<CR>:make! \| cwindow<CR>
 nmap <F2> :set paste<CR>
 nmap <F3> :set nopaste<CR>
 
@@ -31,7 +31,10 @@ set autoindent
 if has("autocmd")
 	autocmd FileType vim setl shiftwidth=4 tabstop=4
 	autocmd FileType ruby setl shiftwidth=2 tabstop=2
-	autocmd FileType c setl shiftwidth=4 tabstop=4
+	autocmd FileType c setl shiftwidth=4 tabstop=4 
+	autocmd FileType c let &makeprg = 'if [[ -f Makefile ]]; then make;else cc -Wall -g ' . expand("%") . ';fi'
+	autocmd Filetype c nmap <F8> <ESC>:!%:p:r<CR>
+	autocmd FileType ruby setl makeprg=ruby\ %:p
 endif
 set shiftwidth=2
 set tabstop=2
