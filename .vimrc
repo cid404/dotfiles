@@ -12,16 +12,37 @@ nmap <F3> :set nopaste<CR>
 
 "Moving between wraped lines
 nnoremap j gj
-nnoremap k g
+nnoremap k gk
 
-"Pathogen
-call pathogen#infect()
+"Disabling arrrow keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <right> <nop>
+noremap <left> <nop>
 
+try
 "set t_Co=256
 colorscheme mustang
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "set background=dark
+"
+"Pathogen
+call pathogen#infect()
+"Taglist
+let Tlist_Inc_Winwidth = 0
+nmap <F9> :TlistToggle<CR>
+
+"NERDTree
+nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nmap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
+nmap <leader>N :NERDTreeClose<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeShowFiles=1   
+let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
+catch
+endtry
 
 "set scrolloff=1 "number of lines to be always visible below/above caret
 set laststatus=2
@@ -29,10 +50,10 @@ set wrapscan
 set number
 set autoindent
 if has("autocmd")
-	autocmd FileType vim setl shiftwidth=4 tabstop=4
-	autocmd FileType ruby setl shiftwidth=2 tabstop=2
+	autocmd FileType vim setl shiftwidth=4 tabstop=4 
+	autocmd FileType ruby setl shiftwidth=2 tabstop=2 expandtab
 	autocmd FileType c setl shiftwidth=4 tabstop=4 
-	autocmd FileType c let &makeprg = 'if [[ -f Makefile ]]; then make;else cc -Wall -g ' . expand("%") . ';fi'
+	autocmd FileType c let &makeprg = 'if [[ -f Makefile ]]; then make;else cc -Wall -g ' . expand("%") . ' -o ' . expand("%:r") . ';fi'
 	autocmd Filetype c nmap <F8> <ESC>:!%:p:r<CR>
 	autocmd FileType ruby setl makeprg=ruby\ %:p
 endif
@@ -63,11 +84,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
-"NERDTree
-nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap <leader>N :NERDTreeClose<CR>
-let NERDTreeShowBookmarks=1
-let NERDTreeShowFiles=1   
-let NERDTreeShowHidden=1
-let NERDTreeHighlightCursorline=1
+
+"Because <F1>-<F4> behaves super crazy 
+"set <F4>=[14~
+"
