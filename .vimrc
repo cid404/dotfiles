@@ -44,7 +44,12 @@ let NERDTreeHighlightCursorline=1
 catch
 endtry
 
+syntax on
+filetype on
+filetype plugin indent on
+"filetype indent on
 "set scrolloff=1 "number of lines to be always visible below/above caret
+
 set laststatus=2
 set wrapscan
 set number
@@ -52,10 +57,11 @@ set autoindent
 if has("autocmd")
 	autocmd FileType vim setl shiftwidth=4 tabstop=4 
 	autocmd FileType ruby setl shiftwidth=2 tabstop=2 expandtab
+	autocmd FileType ruby setl makeprg=ruby\ %:p
 	autocmd FileType c setl shiftwidth=4 tabstop=4 
 	autocmd FileType c let &makeprg = 'if [[ -f Makefile ]]; then make;else cc -Wall -g ' . expand("%") . ' -o ' . expand("%:r") . ';fi'
 	autocmd Filetype c nmap <F8> <ESC>:!%:p:r<CR>
-	autocmd FileType ruby setl makeprg=ruby\ %:p
+	autocmd Filetype python setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 endif
 set shiftwidth=2
 set tabstop=2
@@ -79,10 +85,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-syntax on
-filetype on
-filetype plugin on
-filetype indent on
 
 
 "Because <F1>-<F4> behaves super crazy 
