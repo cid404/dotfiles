@@ -21,7 +21,7 @@ noremap <right> <nop>
 noremap <left> <nop>
 
 try
-"set t_Co=256
+set t_Co=256
 colorscheme mustang
 "let g:solarized_termcolors=256
 "colorscheme solarized
@@ -61,7 +61,7 @@ if has("autocmd")
 	autocmd FileType c setl shiftwidth=4 tabstop=4 
 	autocmd FileType c let &makeprg = 'if [[ -f Makefile ]]; then make;else cc -Wall -g ' . expand("%") . ' -o ' . expand("%:r") . ';fi'
 	autocmd Filetype c nmap <F8> <ESC>:!%:p:r<CR>
-	autocmd Filetype python setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+	autocmd Filetype python setl tabstop=4 softtabstop=4 shiftwidth=4 textwidth=0 expandtab autoindent fileformat=unix
 endif
 set shiftwidth=2
 set tabstop=2
@@ -78,6 +78,7 @@ set noincsearch
 "set visualbell
 "set noerrorbells
 set nowrap
+set wildmenu
 
 "Moving between open windows
 nnoremap <C-h> <C-w>h
